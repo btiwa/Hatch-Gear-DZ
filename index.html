@@ -1,413 +1,134 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="دليل كامل لاستعمال الحاضنة" />
-    <meta name="keywords" content="حاضنات, دليل, استعمال" />
-    <title>دليل كامل لاستعمال الحاضنة</title>
-    <style>
-        :root {
-            --primary: #f57c00;
-            --primary-dark: #e65100;
-            --bg: #f4f7fb;
-            --surface: #ffffff;
-            --text: #1f2d3d;
-            --muted: #64748b;
-            --radius-lg: 18px;
-            --radius-md: 12px;
-            --shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
-            --shadow-soft: 0 4px 14px rgba(15, 23, 42, 0.08);
-        }
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>HATCH & GEAR DZ</title>
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+<style>
+:root{
+--bg:#f3ede6;
+--text:#1f2a33;
+--accent:#f59e0b;
+}
 
-        html {
-            scroll-behavior: smooth;
-        }
+*{box-sizing:border-box}
 
-        body {
-            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-            background: radial-gradient(circle at top, #fff3e8 0%, var(--bg) 40%);
-            color: var(--text);
-            line-height: 1.7;
-            min-height: 100vh;
-            padding-bottom: 92px;
-        }
+body{
+margin:0;
+font-family:system-ui;
+background:var(--bg);
+color:var(--text);
+display:flex;
+justify-content:center;
+padding:20px;
+}
 
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 14px;
-        }
+.container{
+width:100%;
+max-width:500px;
+text-align:center;
+}
 
-        .hero {
-            position: relative;
-            overflow: hidden;
-            background: linear-gradient(135deg, #ff9800 0%, #f57c00 100%);
-            border-radius: var(--radius-lg);
-            padding: 26px 18px;
-            color: #fff;
-            box-shadow: var(--shadow);
-            margin-top: 6px;
-        }
+.logo{
+width:200px;
+margin:auto;
+display:block;
+margin-bottom:10px;
+}
 
-        .hero::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(120deg, transparent 25%, rgba(255, 255, 255, 0.17) 45%, transparent 65%);
-            transform: translateX(-100%);
-            animation: shine 5s linear infinite;
-        }
+h1{
+margin:5px 0 20px 0;
+font-size:24px;
+}
 
-        @keyframes shine {
-            to { transform: translateX(100%); }
-        }
+.buttons{
+display:flex;
+flex-direction:column;
+gap:12px;
+margin-bottom:25px;
+}
 
-        .hero h1 {
-            position: relative;
-            z-index: 1;
-            font-size: 1.35rem;
-            line-height: 1.45;
-            margin-bottom: 10px;
-        }
+.btn{
+display:block;
+padding:14px;
+border-radius:14px;
+background:white;
+text-decoration:none;
+color:var(--text);
+font-weight:bold;
+box-shadow:0 6px 14px rgba(0,0,0,0.08);
+transition:0.2s;
+}
 
-        .hero p {
-            position: relative;
-            z-index: 1;
-            color: rgba(255, 255, 255, 0.95);
-            font-size: 0.95rem;
-        }
+.btn:hover{
+transform:translateY(-2px);
+}
 
-        .quick-links {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 10px;
-            margin-top: 16px;
-            position: relative;
-            z-index: 1;
-        }
+.contact{
+background:white;
+border-radius:16px;
+padding:18px;
+box-shadow:0 6px 14px rgba(0,0,0,0.08);
+text-align:right;
+line-height:1.9;
+}
 
-        .quick-links a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-            text-decoration: none;
-            padding: 10px 12px;
-            border-radius: 999px;
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            background: rgba(255, 255, 255, 0.15);
-            color: #fff;
-            font-weight: 600;
-            font-size: 0.9rem;
-            backdrop-filter: blur(3px);
-        }
+.contact-title{
+font-weight:bold;
+margin-bottom:10px;
+}
 
-        .section-card {
-            background: var(--surface);
-            border-radius: var(--radius-lg);
-            padding: 16px;
-            margin-top: 16px;
-            box-shadow: var(--shadow-soft);
-            border: 1px solid #e8edf4;
-        }
+.phone{
+font-size:16px;
+font-weight:bold;
+}
 
-        .section-head {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 10px;
-        }
-
-        .badge {
-            width: 34px;
-            height: 34px;
-            border-radius: 50%;
-            display: grid;
-            place-items: center;
-            background: #fff5eb;
-            border: 1px solid #ffd5af;
-            font-size: 1rem;
-            flex-shrink: 0;
-        }
-
-        .section-title {
-            font-size: 1.1rem;
-            font-weight: 800;
-        }
-
-        .section-description {
-            color: var(--muted);
-            margin-bottom: 12px;
-            font-size: 0.92rem;
-        }
-
-        .embed-wrap {
-            border: 1px solid #e5e9f1;
-            border-radius: var(--radius-md);
-            overflow: hidden;
-            background: #f9fafc;
-            aspect-ratio: 16 / 10;
-            min-height: 260px;
-        }
-
-        iframe {
-            width: 100%;
-            height: 100%;
-            border: 0;
-        }
-
-        .actions {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 12px;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            border: none;
-            border-radius: 999px;
-            padding: 10px 14px;
-            font-weight: 700;
-            text-decoration: none;
-            cursor: pointer;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-            font-size: 0.9rem;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            color: #fff;
-            box-shadow: 0 5px 14px rgba(245, 124, 0, 0.35);
-        }
-
-        .btn-soft {
-            background: #fff2e5;
-            color: #b45309;
-            border: 1px solid #ffd9b3;
-        }
-
-        .btn:hover {
-            transform: translateY(-2px);
-        }
-
-        .tips {
-            margin-top: 12px;
-            padding: 12px;
-            background: #f8fafc;
-            border: 1px dashed #d7e2f0;
-            border-radius: 10px;
-            color: #475569;
-            font-size: 0.88rem;
-        }
-
-        footer {
-            margin-top: 20px;
-            background: linear-gradient(145deg, #1f2937 0%, #111827 100%);
-            color: #e5e7eb;
-            border-radius: var(--radius-lg);
-            padding: 20px 14px;
-            box-shadow: var(--shadow-soft);
-        }
-
-        .footer-title {
-            color: #ffb86a;
-            font-size: 1.1rem;
-            margin-bottom: 8px;
-            font-weight: 800;
-        }
-
-        .footer-row {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-            margin-top: 10px;
-        }
-
-        .footer-link {
-            color: #fff;
-            text-decoration: none;
-            padding: 10px 12px;
-            border-radius: 999px;
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            font-size: 0.9rem;
-        }
-
-        .copyright {
-            margin-top: 12px;
-            color: #94a3b8;
-            font-size: 0.8rem;
-        }
-
-        .mobile-bar {
-            position: fixed;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            z-index: 20;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 8px;
-            padding: 10px 12px calc(10px + env(safe-area-inset-bottom));
-            background: rgba(255, 255, 255, 0.92);
-            backdrop-filter: blur(10px);
-            border-top: 1px solid #dbe4ef;
-        }
-
-        .mobile-bar a {
-            text-decoration: none;
-            color: #334155;
-            background: #fff;
-            border: 1px solid #e2e8f0;
-            border-radius: 12px;
-            padding: 8px 6px;
-            text-align: center;
-            font-size: 0.78rem;
-            font-weight: 700;
-        }
-
-        .toast {
-            position: fixed;
-            top: 14px;
-            left: 50%;
-            transform: translate(-50%, -20px);
-            background: #0f172a;
-            color: #fff;
-            padding: 8px 12px;
-            border-radius: 999px;
-            font-size: 0.82rem;
-            opacity: 0;
-            pointer-events: none;
-            transition: 0.25s ease;
-            z-index: 30;
-        }
-
-        .toast.show {
-            opacity: 1;
-            transform: translate(-50%, 0);
-        }
-
-        @media (min-width: 760px) {
-            body { padding-bottom: 24px; }
-            .container { padding: 18px; }
-            .hero { padding: 32px 26px; }
-            .hero h1 { font-size: 2rem; }
-            .hero p { font-size: 1rem; }
-            .quick-links { display: flex; flex-wrap: wrap; }
-            .section-card { padding: 20px; }
-            .embed-wrap { min-height: 420px; }
-            .mobile-bar { display: none; }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            * {
-                animation: none !important;
-                transition: none !important;
-                scroll-behavior: auto !important;
-            }
-        }
-    </style>
+</style>
 </head>
+
 <body>
-    <div class="toast" id="toast">تم نسخ رقم الهاتف</div>
 
-    <main class="container">
-        <header class="hero" id="top">
-            <h1>دليل كامل لاستعمال الحاضنة</h1>
-            <p>صفحة منظمة وسهلة على الهاتف للوصول السريع إلى الفيديوهات والصور والدعم.</p>
-            <div class="quick-links">
-                <a href="#videos">📹 الفيديوهات</a>
-                <a href="#images">🖼️ الصور</a>
-                <a href="#contact">📞 التواصل</a>
-                <a href="#top">⬆️ أعلى الصفحة</a>
-            </div>
-        </header>
+<div class="container">
 
-        <section class="section-card" id="videos">
-            <div class="section-head">
-                <span class="badge">📹</span>
-                <h2 class="section-title">الفيديوهات التعليمية</h2>
-            </div>
-            <p class="section-description">شاهد جميع الفيديوهات الخاصة باستعمال الحاضنة مباشرة من الصفحة.</p>
+<img class="logo" src="logo.png">
 
-            <div class="embed-wrap">
-                <iframe
-                    src="https://drive.google.com/embeddedfolderview?id=18VVXqeyBKYXBS5M7Le4gn7c-f5s8LMq1#grid"
-                    title="فيديوهات تعليمية"
-                    loading="lazy"
-                    allowfullscreen>
-                </iframe>
-            </div>
+<h1>HATCH & GEAR DZ</h1>
 
-            <div class="actions">
-                <a class="btn btn-primary" href="https://drive.google.com/drive/folders/18VVXqeyBKYXBS5M7Le4gn7c-f5s8LMq1" target="_blank" rel="noopener noreferrer">📂 فتح المجلد</a>
-            </div>
-            <p class="tips">نصيحة: إذا كان الإنترنت بطيئاً، افتح المجلد مباشرة عبر الزر لتجربة أسرع.</p>
-        </section>
+<div class="buttons">
 
-        <section class="section-card" id="images">
-            <div class="section-head">
-                <span class="badge">🖼️</span>
-                <h2 class="section-title">معرض الصور</h2>
-            </div>
-            <p class="section-description">تصفح جميع الصور والمخططات التوضيحية بسهولة، مع عرض مناسب للجوال.</p>
+<a class="btn" href="https://drive.google.com/drive/folders/1BcoJjMeFMus7op2kfovWFnrvMNH2qmDz?usp=drive_link" target="_blank">
+📷 الصور
+</a>
 
-            <div class="embed-wrap">
-                <iframe
-                    src="https://drive.google.com/embeddedfolderview?id=1BcoJjMeFMus7op2kfovWFnrvMNH2qmDz#grid"
-                    title="معرض الصور"
-                    loading="lazy"
-                    allowfullscreen>
-                </iframe>
-            </div>
+<a class="btn" href="https://drive.google.com/drive/folders/18VVXqeyBKYXBS5M7Le4gn7c-f5s8LMq1?usp=drive_link" target="_blank">
+🎬 الفيديوهات
+</a>
 
-            <div class="actions">
-                <a class="btn btn-primary" href="https://drive.google.com/drive/folders/1BcoJjMeFMus7op2kfovWFnrvMNH2qmDz" target="_blank" rel="noopener noreferrer">📂 فتح المجلد</a>
-            </div>
-        </section>
+<a class="btn" href="guide.html">
+📘 دليل الاستعمال
+</a>
 
-        <footer id="contact">
-            <h3 class="footer-title">تواصل معنا</h3>
-            <p>📱 الهاتف: <a class="footer-link" href="tel:+964793418270">0793418270</a></p>
-            <div class="footer-row">
-                <button class="btn btn-soft" id="copyPhone" type="button">📋 نسخ الرقم</button>
-                <a class="footer-link" href="https://www.facebook.com/profile.php?id=61580596066598&locale=ar_AR" target="_blank" rel="noopener noreferrer">📘 تابعنا على Facebook</a>
-            </div>
-            <p class="copyright">© 2026 دليل استعمال الحاضنة - جميع الحقوق محفوظة</p>
-        </footer>
-    </main>
+<a class="btn" href="https://www.facebook.com/profile.php?id=61580596066598&locale=ar_AR" target="_blank">
+🔵 صفحة فيسبوك
+</a>
 
-    <nav class="mobile-bar" aria-label="روابط سريعة للجوال">
-        <a href="#videos">📹 فيديو</a>
-        <a href="#images">🖼️ صور</a>
-        <a href="tel:+964793418270">📞 اتصال</a>
-    </nav>
+</div>
 
-    <script>
-        const copyButton = document.getElementById("copyPhone");
-        const toast = document.getElementById("toast");
+<div class="contact">
 
-        copyButton.addEventListener("click", async () => {
-            const phone = "0793418270";
-            try {
-                await navigator.clipboard.writeText(phone);
-                toast.classList.add("show");
-                setTimeout(() => toast.classList.remove("show"), 1600);
-            } catch (_) {
-                alert("لم نتمكن من النسخ تلقائياً. الرقم: " + phone);
-            }
-        });
-    </script>
+<div class="contact-title">معلومات التواصل</div>
+
+🚚 توصيل لكل ولايات الجزائر
+
+<div class="phone">📞 0793418270</div>
+<div class="phone">📞 0540847938</div>
+
+📍 عموشة، سطيف
+
+</div>
+
+</div>
+
 </body>
 </html>
